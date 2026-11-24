@@ -1,0 +1,5 @@
+{
+  "name": "pymelocal-ia",
+  "integrations": { "capacitor": {} },
+  "type": "angular-standalone"
+}

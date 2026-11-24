@@ -1,0 +1,56 @@
+name: Compilar APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar la aplicación web (Ionic + Angular)
+        run: npx ng build
+
+      - name: Copiar la aplicación al proyecto Android (Capacitor)
+        run: npx cap sync android
+
+      - name: Compilar el APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Renombrar el APK
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk PymeLocal-IA-entrega2.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PymeLocal-IA-apk
+          path: PymeLocal-IA-entrega2.apk
+
+      - name: Publicar el APK como descarga
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: entrega-2
+          name: PymeLocal IA · Entrega 2
+          body: APK de avance de la Entrega 2 (navegación completa y requerimientos funcionales implementados).
+          files: PymeLocal-IA-entrega2.apk
