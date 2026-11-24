@@ -15,6 +15,6 @@ import { IonIcon, IonLabel, IonTabBar, IonTabButton, IonTabs } from '@ionic/angu
       </ion-tab-bar>
     </ion-tabs>
   `,
-  styles: [`ion-tab-bar { --border: 1px solid var(--pl-line); height: 64px; } ion-tab-button { --color-selected: var(--ion-color-primary); --color: var(--ion-color-medium); font-size: 12px; }`],
+  styles: [`ion-tab-bar { --border: 1px solid var(--pl-line); height: calc(64px + var(--ion-safe-area-bottom, 0px)); } ion-tab-button { --color-selected: var(--ion-color-primary); --color: var(--ion-color-medium); font-size: 12px; }`],
 })
 export class TabsPage {}

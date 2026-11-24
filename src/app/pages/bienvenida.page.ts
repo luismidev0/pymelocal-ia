@@ -28,7 +28,7 @@ import { IonButton, IonContent } from '@ionic/angular/standalone';
     </ion-content>
   `,
   styles: [`
-    .caja { min-height: 100%; display: flex; flex-direction: column; gap: 28px; padding: 56px 24px 32px; }
+    .caja { min-height: 100%; display: flex; flex-direction: column; gap: 28px; padding: calc(56px + var(--ion-safe-area-top, 0px)) 24px calc(32px + var(--ion-safe-area-bottom, 0px)); }
     .marca { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
     .logo { width: 72px; height: 72px; border-radius: 18px; background: var(--ion-color-primary); color: #fff; font-size: 28px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
     h1 { margin: 0; font-size: 28px; font-weight: 700; }

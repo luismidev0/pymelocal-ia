@@ -11,7 +11,7 @@ import { IaService } from '../core/ia.service';
   imports: [RouterLink, DatePipe, IonContent, IonIcon],
   template: `
     <ion-content>
-      <div class="pl-page">
+      <div class="pl-page tope">
         <div>
           <span class="pl-muted">Hola,</span>
           <h1>{{ datos.perfil()?.nombre }}</h1>
@@ -49,6 +49,7 @@ import { IaService } from '../core/ia.service';
     </ion-content>
   `,
   styles: [`
+    .tope { padding-top: calc(24px + var(--ion-safe-area-top, 0px)); }
     h1 { margin: 2px 0 0; font-size: 24px; font-weight: 700; }
     .accion { display: flex; align-items: center; gap: 14px; min-height: 84px; padding: 16px; border: 1.5px solid var(--pl-line); border-radius: 12px; color: var(--ion-text-color); text-decoration: none; }
     .accion > ion-icon { color: var(--ion-color-medium); font-size: 20px; }
